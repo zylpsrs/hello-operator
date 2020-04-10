@@ -1,0 +1,4 @@
+---
+# defaults file for greeter
+size: 1
+image: registry.ocp.zyl.io:5000/greeter:v1

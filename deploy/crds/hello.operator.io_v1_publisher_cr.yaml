@@ -1,0 +1,7 @@
+apiVersion: hello.operator.io/v1
+kind: Publisher
+metadata:
+  name: example-publisher
+spec:
+  # Add fields here
+  size: 3

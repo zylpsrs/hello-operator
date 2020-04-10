@@ -1,0 +1,12 @@
+- name: Set version
+  set_fact:
+    version: "{{ image|regex_replace('^.*:(?P<tag>.*)$', '\\g<tag>') }}"
+  when: version is not defined
+
+- name: Create deployment
+  k8s:
+   definition: "{{ lookup('template', 'deployment.yml.j2') | from_yaml }}"
+   
+- name: Create service
+  k8s:
+   definition: "{{ lookup('template', 'service.yml.j2') | from_yaml }}"

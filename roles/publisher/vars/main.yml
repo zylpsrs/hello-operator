@@ -1,0 +1,4 @@
+---
+_port: 9080
+_app: publisher
+_greeter_svc: "greeter:{{ _port }}"

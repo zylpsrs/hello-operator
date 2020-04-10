@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: {{ _app }}
+  name: {{ _app }}
+  namespace: {{meta.namespace}}
+spec:
+  ports:
+  - name: http
+    port: {{ _port }}
+    targetPort: {{ _port }}
+    protocol: TCP
+  selector:
+    app: {{ _app }}
+  sessionAffinity: None
+  type: ClusterIP
