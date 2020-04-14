@@ -4,7 +4,7 @@ metadata:
   labels:
     app: {{ _app }}
     version: {{version}}
-  name: {{ _app }}-{{ meta.name }}-{{ version }}
+  name: {{ _app }}-{{ meta.name }}
   namespace: {{ meta.namespace }}
 spec:
   replicas: {{ size }}
@@ -14,6 +14,8 @@ spec:
       version: {{ version }}
   template:
     metadata:
+      annotations:
+        sidecar.istio.io/inject: "{{ istio_sidecar_inject | default("False") }}"
       labels:
         app: {{ _app }}
         version: {{ version }}

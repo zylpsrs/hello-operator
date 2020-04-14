@@ -37,6 +37,12 @@ spec:
           iamge:
             description: Base image to use
             type: string
+          istioSidecarInject:
+            description: istio sidecar inject
+            type: string
+          publisherService:
+            description: publisher service
+            type: string
           type: object
       type: object
   versions:

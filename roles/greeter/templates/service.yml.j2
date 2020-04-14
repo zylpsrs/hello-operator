@@ -3,7 +3,8 @@ kind: Service
 metadata:
   labels:
     app: {{ _app }}
-  name: {{ _app }}
+    version: {{version}}
+  name: {{ _app }}-{{ meta.name }}
   namespace: {{ meta.namespace }}
 spec:
   ports:
@@ -13,5 +14,6 @@ spec:
     protocol: TCP
   selector:
     app: {{ _app }}
+    version: {{version}}
   sessionAffinity: None
   type: ClusterIP

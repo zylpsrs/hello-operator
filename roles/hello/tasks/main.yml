@@ -3,6 +3,14 @@
     version: "{{ image|regex_replace('^.*:(?P<tag>.*)$', '\\g<tag>') }}"
   when: version is not defined
 
+- name: Config publisher service
+  set_fact:
+    _publisher_svc: "{%- if publisher_service is defined -%}
+	{{publisher_service}}
+      {%- else -%}
+        publisher:{{ _port }}
+      {%- endif -%}"
+
 - name: Create deployment
   k8s:
    definition: "{{ lookup('template', 'deployment.yml.j2') | from_yaml }}"
